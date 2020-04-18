@@ -158,6 +158,7 @@ pub mod ffi;
 pub mod key;
 #[cfg(feature = "recovery")]
 pub mod recovery;
+mod reexport;
 
 pub use key::SecretKey;
 pub use key::PublicKey;

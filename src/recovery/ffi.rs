@@ -15,6 +15,16 @@
 
 //! # FFI of the recovery module
 
+pub use secp256k1_sys::recovery::{
+    RecoverableSignature,
+    secp256k1_ecdsa_recoverable_signature_parse_compact,
+    secp256k1_ecdsa_recoverable_signature_serialize_compact,
+    secp256k1_ecdsa_recoverable_signature_convert,
+    secp256k1_ecdsa_sign_recoverable,
+    secp256k1_ecdsa_recover,
+};
+
+/*
 use core::mem;
 use types::*;
 use ffi::{Context, NonceFn, PublicKey, Signature, CPtr};
@@ -125,3 +135,4 @@ mod fuzz_dummy {
 }
 #[cfg(feature = "fuzztarget")]
 pub use self::fuzz_dummy::*;
+*/

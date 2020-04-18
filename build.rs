@@ -26,6 +26,7 @@ extern crate cc;
 use std::env;
 
 fn main() {
+    /*
     // Check whether we can use 64-bit compilation
     let use_64bit_compilation = if env::var("CARGO_CFG_TARGET_POINTER_WIDTH").unwrap() == "64" {
         let check = cc::Build::new().file("depend/check_uint128_t.c")
@@ -84,5 +85,6 @@ fn main() {
     base_config.file("depend/secp256k1/contrib/lax_der_parsing.c")
                .file("depend/secp256k1/src/secp256k1.c")
                .compile("libsecp256k1.a");
+    */
 }
 

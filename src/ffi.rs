@@ -16,8 +16,59 @@
 //! # FFI bindings
 //! Direct bindings to the underlying C library functions. These should
 //! not be needed for most users.
+
+pub use secp256k1_sys::{
+SECP256K1_START_NONE,
+SECP256K1_START_VERIFY,
+SECP256K1_START_SIGN,
+SECP256K1_SER_UNCOMPRESSED,
+SECP256K1_SER_COMPRESSED,
+NonceFn,
+EcdhHashFn,
+Context,
+PublicKey,
+Signature,
+secp256k1_ecdh_hash_function_default,
+secp256k1_nonce_function_rfc6979,
+secp256k1_nonce_function_default,
+secp256k1_context_no_precomp,
+secp256k1_context_preallocated_size,
+secp256k1_context_preallocated_create,
+secp256k1_context_preallocated_destroy,
+secp256k1_context_preallocated_clone_size,
+secp256k1_context_preallocated_clone,
+secp256k1_context_randomize,
+secp256k1_ec_pubkey_parse,
+secp256k1_ec_pubkey_serialize,
+secp256k1_ecdsa_signature_parse_der,
+secp256k1_ecdsa_signature_parse_compact,
+ecdsa_signature_parse_der_lax,
+secp256k1_ecdsa_signature_serialize_der,
+secp256k1_ecdsa_signature_serialize_compact,
+secp256k1_ecdsa_signature_normalize,
+secp256k1_ecdsa_verify,
+secp256k1_ecdsa_sign,
+secp256k1_ec_seckey_verify,
+secp256k1_ec_pubkey_create,
+secp256k1_ec_privkey_tweak_add,
+secp256k1_ec_pubkey_tweak_add,
+secp256k1_ec_privkey_tweak_mul,
+secp256k1_ec_pubkey_tweak_mul,
+secp256k1_ec_pubkey_combine,
+secp256k1_ecdh,
+secp256k1_context_create,
+secp256k1_context_destroy,
+};
+
+pub use secp256k1_sys::rustsecp256k1_v0_1_1_default_illegal_callback_fn as secp256k1_default_illegal_callback_fn;
+pub use secp256k1_sys::rustsecp256k1_v0_1_1_default_error_callback_fn as secp256k1_default_error_callback_fn;
+
+pub(crate) use secp256k1_sys::CPtr;
+
 use core::{mem, hash, slice, ptr};
 use types::*;
+
+/*
 
 /// Flag for context to enable no precomputation
 pub const SECP256K1_START_NONE: c_uint = 1;
@@ -112,6 +163,7 @@ impl Default for Signature {
         Signature::new()
     }
 }
+*/
 
 /// Library-internal representation of an ECDH shared secret
 #[repr(C)]
@@ -133,6 +185,7 @@ impl Default for SharedSecret {
     }
 }
 
+/*
 #[cfg(not(feature = "fuzztarget"))]
 extern "C" {
     /// Default ECDH hash function
@@ -348,7 +401,6 @@ pub unsafe extern "C" fn secp256k1_default_error_callback_fn(message: *const c_c
     panic!("[libsecp256k1] internal consistency check failed {}", msg);
 }
 
-
 unsafe fn strlen(mut str_ptr: *const c_char) -> usize {
     let mut ctr = 0;
     while *str_ptr != '\0' as c_char {
@@ -357,7 +409,6 @@ unsafe fn strlen(mut str_ptr: *const c_char) -> usize {
     }
     ctr
 }
-
 
 /// A trait for producing pointers that will always be valid in C. (assuming NULL pointer is a valid no-op)
 /// Rust doesn't promise what pointers does it give to ZST (https://doc.rust-lang.org/nomicon/exotic-sizes.html#zero-sized-types-zsts)
@@ -750,7 +801,6 @@ mod fuzz_dummy {
 #[cfg(feature = "fuzztarget")]
 pub use self::fuzz_dummy::*;
 
-
 #[cfg(test)]
 mod tests {
     use std::ffi::CString;
@@ -764,3 +814,5 @@ mod tests {
         assert_eq!(orig.len(), unsafe {strlen(test.as_ptr())});
     }
 }
+*/
+

@@ -1,6 +1,9 @@
 #![allow(non_camel_case_types)]
 use core::fmt;
 
+pub use secp256k1_sys::types::{c_int, c_uchar, c_uint, c_char, c_void};
+
+/*
 pub type c_int = i32;
 pub type c_uchar = u8;
 pub type c_uint = u32;
@@ -24,3 +27,4 @@ impl fmt::Debug for c_void {
         f.pad("c_void")
     }
 }
+*/

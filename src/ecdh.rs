@@ -33,7 +33,7 @@ impl SharedSecret {
             let mut ss = ffi::SharedSecret::new();
             let res = ffi::secp256k1_ecdh(
                 ffi::secp256k1_context_no_precomp,
-                &mut ss,
+                ss.as_mut_ptr(),
                 point.as_c_ptr(),
                 scalar.as_c_ptr(),
                 ffi::secp256k1_ecdh_hash_function_default,

@@ -143,6 +143,9 @@
 #[cfg(any(test, feature = "rand"))] use rand::Rng;
 #[cfg(any(test, feature = "std"))] extern crate core;
 
+#[macro_use]
+extern crate secp256k1_sys;
+
 use core::{fmt, ptr, str};
 
 #[macro_use]

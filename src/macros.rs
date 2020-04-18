@@ -14,6 +14,7 @@
 //
 
 // This is a macro that routinely comes in handy
+/*
 macro_rules! impl_array_newtype {
     ($thing:ident, $ty:ty, $len:expr) => {
         impl Copy for $thing {}
@@ -142,6 +143,7 @@ macro_rules! impl_array_newtype {
         }
     }
 }
+*/
 
 macro_rules! impl_pretty_debug {
     ($thing:ident) => {
@@ -157,6 +159,7 @@ macro_rules! impl_pretty_debug {
      }
 }
 
+/*
 macro_rules! impl_raw_debug {
     ($thing:ident) => {
         impl ::core::fmt::Debug for $thing {
@@ -169,6 +172,7 @@ macro_rules! impl_raw_debug {
         }
      }
 }
+*/
 
 #[cfg(feature="serde")]
 /// Implements `Serialize` and `Deserialize` for a type `$t` which represents

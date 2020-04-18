@@ -1,12 +1,13 @@
+#![allow(missing_docs)]
+
 use types::*;
 use secp256k1_sys::{Context, PublicKey, Signature, EcdhHashFn, NonceFn};
-use ffi::SharedSecret;
 
 macro_rules! reexport {
-    ($(fn $fun:ident($($arg:ident: $arg_type:ty),* $(,)?) $(-> $ret:ty)?;)*) => {
+    ($(fn $fun:ident($($arg:ident: $arg_type:ty),* $(,)*) $(-> $ret:ty)*;)*) => {
         $(
             #[no_mangle]
-            pub unsafe extern "C" fn $fun($($arg: $arg_type),*) $(-> $ret)? {
+            pub unsafe extern "C" fn $fun($($arg: $arg_type),*) $(-> $ret)* {
                 ::ffi::$fun($($arg),*)
             }
         )*
